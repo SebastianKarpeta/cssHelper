@@ -1,0 +1,109 @@
+/* Author: Sebastian Karpeta */
+/* E-mail: sebastian@karpeta.org */
+/* Version: 1.3 */
+
+$line_position: 'top'
+$line_color: #c2c2c2
+$line_width: 60px
+
+
+$margins: (0: 0, xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem)
+@each $name, $value in $margins
+  .margin-top-#{$name}
+    margin-top: $value
+  .margin-bottom-#{$name}
+    margin-bottom: $value
+  .padding-top-#{$name}
+    padding-top: $value
+  .padding-bottom-#{$name}
+    padding-bottom: $value
+  .margin-left-#{$name}
+    margin-left: $value
+  .margin-right-#{$name}
+    margin-right: $value
+  .padding-right-#{$name}
+    padding-right: $value
+  .padding-left-#{$name}
+    padding-left: $value
+  .padding-#{$name}
+    padding: $value
+  .margin-#{$name}
+    margin: $value
+
+@mixin line ($_position: $line_position, $_color: $line_color, $_width : $line_width)
+  border-bottom: 2px solid #1ab394
+  height: 1px
+  margin: $_width auto 0
+  width: $_width
+
+
+@for $i from 1 through 40
+  $value: ($i * 10)
+  .offset-left-#{$value}
+    margin-left: -#{$value}px
+  .offset-right-#{$value}
+    margin-left: #{$value}px
+
+.no-headers
+  .page-header
+    display: none
+  @for $i from 1 through 6
+    h#{$i}
+      display: none
+
+.no
+  &.headers
+    @extend .no-headers
+  &.padding
+    @extend .padding-0
+  &.margin
+    @extend .margin-0
+  &.padding
+    @extend .padding-0
+  &.border
+    border: 0px
+  &.wrap
+    white-space: nowrap
+  &.shadow
+    box-shadow: none
+
+
+/* POSITIONS */
+.position
+  &.absolute
+    position: absolute
+  &.relative
+    position: relative
+  &.top
+    bottom: 0px    
+  &.bottom
+    bottom: 0px
+  &.left
+    left: 0px
+  &.right
+    left: 0px        
+
+  
+
+/* ROUNDED CORNERS */
+
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius:    $radius
+  -ms-border-radius:     $radius
+  border-radius:         $radius
+
+/* DELAYS FOR ANIMATE.CSS */
+@for $i from 1 through 5
+  .delay-#{$i}
+    -webkit-animation-delay: #{$i}s
+    animation-delay: #{$i}s
+  .delay-#{$i}-5
+    -webkit-animation-delay: #{$i}s
+    animation-delay: #{$i}s
+
+.disabled
+  &.line-through 
+    text-decoration: line-through
+
+
